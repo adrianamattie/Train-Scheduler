@@ -22,7 +22,7 @@ $("#addTrainBtn").on("click", function (event) {
     var firstTrain = moment($("#trainTimeInput").val().trim(), "HH:mm").format("X");
     var frequency = $("#frequencyInput").val().trim();
 
-    // Creates local "temporary" object for holding employee data
+    // Creates local "temporary" object for holding train data
     var newTrain = {
         "name": trainName,
         "location": destination,
@@ -30,7 +30,7 @@ $("#addTrainBtn").on("click", function (event) {
         "trainFrequency": frequency
     };
 
-    // Uploads employee data to the database
+    // Uploads train data to the database
     database.ref("/employees").push(newTrain);
 
     // Logs everything to console
@@ -49,7 +49,7 @@ $("#addTrainBtn").on("click", function (event) {
     $("#frequencyInput").val("");
 });
 
-// 3. Create Firebase event for adding employee to the database and a row in the html when a user adds an entry
+// 3. Create Firebase event for adding trains to the database and a row in the html when a user adds an entry
 database.ref().on("child_added", function (childSnapshot, prevChildKey) {
 
     console.log(childSnapshot.val());
@@ -62,13 +62,13 @@ database.ref().on("child_added", function (childSnapshot, prevChildKey) {
 
 
 
-    // Employee Info
+    // Train Info
     console.log(trainName);
     console.log(destination);
     console.log(firstTrain);
     console.log(frequency);
 
-    // Prettify the employee start
+    // Prettify the Train start
     var firstTrainPretty = moment.unix(firstTrain).format("HH:mm");
 
     TODO = "Math to do";
